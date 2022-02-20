@@ -1,0 +1,15 @@
+version: '3.10'
+
+services:
+  wordle-cli:
+    restart: on-failure
+    build:
+      context: .
+      args:
+        APP_ENV: ${APP_ENV}
+    container_name: wordle-cli
+    volumes:
+      - .:/wordle-cli
+    environment:
+      APP_ENV: ${APP_ENV:-dev}
+      GAME_TRIALS: ${GAME_TRIALS}
